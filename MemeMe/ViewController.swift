@@ -10,17 +10,40 @@ import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    // Hide the status bar
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
-    
+    @IBOutlet weak var topTextFieldView: UITextField!
+    @IBOutlet weak var bottomTextFieldView: UITextField!
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     
     // Identify the button that was tapped
     enum ButtonType: Int {
         case camera = 0, album
+    }
+    
+    // Hide the status bar
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let memeTextAttributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.strokeColor: UIColor.black,
+            NSAttributedString.Key.strokeWidth: 5
+        ]
+        
+        topTextFieldView.defaultTextAttributes = memeTextAttributes
+        topTextFieldView.text = "TOP"
+        topTextFieldView.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)
+        topTextFieldView.textColor = UIColor.white
+        topTextFieldView.textAlignment = .center
+        
+        bottomTextFieldView.defaultTextAttributes = memeTextAttributes
+        bottomTextFieldView.text = "BOTTOM"
+        bottomTextFieldView.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)
+        bottomTextFieldView.textColor = UIColor.white
+        bottomTextFieldView.textAlignment = .center
     }
     
     override func viewWillAppear(_ animated: Bool) {
