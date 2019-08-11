@@ -23,7 +23,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
             shareBarButtonItem.isEnabled = true
         }
         
-        // Dismiss the image picker's view
+        // Dismiss the album view
         dismiss(animated: true, completion: nil)
     }
 }

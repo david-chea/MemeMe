@@ -8,12 +8,16 @@
 
 import UIKit
 
+// MARK: - Object Meme
+
 struct Meme {
     var topText: String
     var bottomText: String
     var originalImage: UIImage
     var memedImage: UIImage
 }
+
+// MARK: Meme methods
 
 func save(topTextField: UITextField, bottomTextField: UITextField, imageView: UIImageView, memedImage: UIImage) {
     let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageView.image!, memedImage: memedImage)

@@ -138,22 +138,31 @@ class ViewController: UIViewController {
             imagePickerController.sourceType = .photoLibrary
         }
         
+        // Present the album view
         present(imagePickerController, animated: true, completion: nil)
     }
     
     // Trigger when the user tapped for sharing a meme
     @IBAction func shareAction(_ sender: Any) {
+        // Generate a memed image
         let memedImage = generateMemedImage(viewController: self)
+        
+        // Define an instance of UIActivityViewController and pass the memed image as an activity item
         let activityViewController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         
+        // UIActivityViewController has finished and it's time to do some final operations
         activityViewController.completionWithItemsHandler = {
             (activityType, completed, returnedItems, activityError) in
                 if (completed && activityError == nil) {
+                    // Save the memed image
                     save(topTextField: self.topTextField, bottomTextField: self.bottomTextField, imageView: self.imageView, memedImage: memedImage)
+                    
+                    // Dismiss the sharing view
                     self.dismiss(animated: true, completion: nil)
                 }
         }
         
+        // Present the sharing view
         present(activityViewController, animated: true, completion: nil)
     }
 }
