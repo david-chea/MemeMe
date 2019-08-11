@@ -72,8 +72,8 @@
                     </view>
                     <connections>
                         <outlet property="bottomTextField" destination="xTr-MZ-568" id="3B5-cB-fcq"/>
-                        <outlet property="cameraButton" destination="Jbe-Dn-qKR" id="mL2-qz-nhL"/>
-                        <outlet property="imagePickerView" destination="UrE-Q1-IQ1" id="AsR-g4-GNu"/>
+                        <outlet property="cameraBarButtonItem" destination="Jbe-Dn-qKR" id="VI4-3S-68V"/>
+                        <outlet property="imageView" destination="UrE-Q1-IQ1" id="1Ea-mg-A8H"/>
                         <outlet property="topTextField" destination="b3e-OA-PyF" id="Anb-gk-l7p"/>
                     </connections>
                 </viewController>

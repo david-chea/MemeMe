@@ -8,17 +8,16 @@
 
 import UIKit
 
+// MARK - TextFieldDelegate: NSObject, UITextFieldDelegate
+
 class TextFieldDelegate: NSObject, UITextFieldDelegate {
     
-    var isFirstTimeTop: Bool
-    var isFirstTimeBottom: Bool
+    // MARK: Properties
     
-    override init() {
-        isFirstTimeTop = true
-        isFirstTimeBottom = true
-        
-        super.init()
-    }
+    var isFirstTimeTop = true
+    var isFirstTimeBottom = true
+    
+    // MARK: Delegate methods
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if isFirstTimeTop && textField.accessibilityIdentifier == "topTextField" {
@@ -28,5 +27,11 @@ class TextFieldDelegate: NSObject, UITextFieldDelegate {
             textField.text = ""
             isFirstTimeBottom = false
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        
+        return true
     }
 }

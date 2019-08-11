@@ -8,7 +8,7 @@
 
 import UIKit
 
-// MARK: - ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate
+// MARK - ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate
 
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
