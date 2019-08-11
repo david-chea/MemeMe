@@ -8,10 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController {
     
-    @IBOutlet weak var topTextFieldView: UITextField!
-    @IBOutlet weak var bottomTextFieldView: UITextField!
+    @IBOutlet weak var topTextField: UITextField!
+    @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     
@@ -25,25 +25,25 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return true
     }
     
+    let textFieldDelegate = TextFieldDelegate()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let memeTextAttributes: [NSAttributedString.Key: Any] = [
-            NSAttributedString.Key.strokeColor: UIColor.black,
-            NSAttributedString.Key.strokeWidth: 5
+            .font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+            .foregroundColor: UIColor.white,
+            .strokeColor: UIColor.black,
+            .strokeWidth: 5
         ]
         
-        topTextFieldView.defaultTextAttributes = memeTextAttributes
-        topTextFieldView.text = "TOP"
-        topTextFieldView.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)
-        topTextFieldView.textColor = UIColor.white
-        topTextFieldView.textAlignment = .center
+        topTextField.defaultTextAttributes = memeTextAttributes
+        topTextField.textAlignment = .center
+        topTextField.delegate = textFieldDelegate
         
-        bottomTextFieldView.defaultTextAttributes = memeTextAttributes
-        bottomTextFieldView.text = "BOTTOM"
-        bottomTextFieldView.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)
-        bottomTextFieldView.textColor = UIColor.white
-        bottomTextFieldView.textAlignment = .center
+        bottomTextField.defaultTextAttributes = memeTextAttributes
+        bottomTextField.textAlignment = .center
+        bottomTextField.delegate = textFieldDelegate
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,15 +69,5 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         
         present(imagePicker, animated: true, completion: nil)
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        // Retrieve and set the image to the view
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            imagePickerView.image = image
-        }
-        
-        // Dismiss the image picker's view
-        dismiss(animated: true, completion: nil)
     }
 }
