@@ -18,6 +18,9 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         // Retrieve and set the image to the view
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             imageView.image = image
+            
+            // An image has been chosen so enable the share button
+            shareBarButtonItem.isEnabled = true
         }
         
         // Dismiss the image picker's view

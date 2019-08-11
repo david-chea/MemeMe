@@ -12,6 +12,7 @@
 		6369F9B422FEF20A00212F76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6369F9B222FEF20A00212F76 /* Main.storyboard */; };
 		6369F9B622FEF20C00212F76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6369F9B522FEF20C00212F76 /* Assets.xcassets */; };
 		63D19B0B23001A7700C4A999 /* TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D19B0A23001A7700C4A999 /* TextFieldDelegate.swift */; };
+		63FC8B6D23007806003BBE6F /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FC8B6C23007806003BBE6F /* Meme.swift */; };
 		63FDE37323004B8F00D57B0A /* ViewController+ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FDE37223004B8F00D57B0A /* ViewController+ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,7 @@
 		6369F9B522FEF20C00212F76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6369F9BA22FEF20C00212F76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63D19B0A23001A7700C4A999 /* TextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldDelegate.swift; sourceTree = "<group>"; };
+		63FC8B6C23007806003BBE6F /* Meme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 		63FDE37223004B8F00D57B0A /* ViewController+ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+ImagePicker.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,6 +65,7 @@
 				6369F9BA22FEF20C00212F76 /* Info.plist */,
 				63D19B0A23001A7700C4A999 /* TextFieldDelegate.swift */,
 				63FDE37223004B8F00D57B0A /* ViewController+ImagePicker.swift */,
+				63FC8B6C23007806003BBE6F /* Meme.swift */,
 			);
 			path = MemeMe;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 				6369F9B122FEF20A00212F76 /* ViewController.swift in Sources */,
 				6369F9AF22FEF20A00212F76 /* AppDelegate.swift in Sources */,
 				63D19B0B23001A7700C4A999 /* TextFieldDelegate.swift in Sources */,
+				63FC8B6D23007806003BBE6F /* Meme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

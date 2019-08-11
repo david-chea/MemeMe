@@ -16,8 +16,9 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var shareBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var cameraBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var imageView: UIImageView!
     
     // MARK: Controllers
     
@@ -29,7 +30,7 @@ class ViewController: UIViewController {
     
     // MARK: Properties
     
-    var isBottomTextFieldTouched = false
+    var isBottomTextFieldTapped = false
     
     // MARK: ???
     
@@ -67,15 +68,19 @@ class ViewController: UIViewController {
         bottomTextField.delegate = textFieldDelegate
         imagePickerController.delegate = self
         
-        bottomTextField.addTarget(self, action: #selector(bottomTextFieldTouched), for: .touchDown)
+        // The controller will know as soon as the user tapped the bottom text field
+        bottomTextField.addTarget(self, action: #selector(bottomTextFieldTapped), for: .touchDown)
     }
     
-    @objc func bottomTextFieldTouched() {
-        isBottomTextFieldTouched = true
+    @objc func bottomTextFieldTapped() {
+        isBottomTextFieldTapped = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // Disable the share button until an image has been chosen
+        shareBarButtonItem.isEnabled = true
         
         // Disable the camera button if the device doesn't have a camera
         cameraBarButtonItem.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
@@ -103,9 +108,9 @@ class ViewController: UIViewController {
     
     // Only move the view if it's the bottom text field that was touched
     @objc func keyboardWillShow(_ notification: Notification) {
-        if isBottomTextFieldTouched {
+        if isBottomTextFieldTapped {
             view.frame.origin.y -= getKeyboardHeight(notification)
-            isBottomTextFieldTouched = false
+            isBottomTextFieldTapped = false
         }
     }
     
@@ -124,7 +129,7 @@ class ViewController: UIViewController {
     // MARK: Actions
     
     // Trigger when the user tapped for picking an image
-    @IBAction func pickAnImage(_ sender: UIBarButtonItem) {
+    @IBAction func albumAction(_ sender: UIBarButtonItem) {
         // Set the image's source type
         switch (ButtonType(rawValue: sender.tag)!) {
         case .camera:
@@ -134,5 +139,21 @@ class ViewController: UIViewController {
         }
         
         present(imagePickerController, animated: true, completion: nil)
+    }
+    
+    // Trigger when the user tapped for sharing a meme
+    @IBAction func shareAction(_ sender: Any) {
+        let memedImage = generateMemedImage(viewController: self)
+        let activityViewController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
+        
+        activityViewController.completionWithItemsHandler = {
+            (activityType, completed, returnedItems, activityError) in
+                if (completed && activityError == nil) {
+                    save(topTextField: self.topTextField, bottomTextField: self.bottomTextField, imageView: self.imageView, memedImage: memedImage)
+                    self.dismiss(animated: true, completion: nil)
+                }
+        }
+        
+        present(activityViewController, animated: true, completion: nil)
     }
 }
