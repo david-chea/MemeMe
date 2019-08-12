@@ -51,27 +51,26 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set text attributes
-        let memeTextAttributes: [NSAttributedString.Key: Any] = [
+        // Set image view delegate
+        imagePickerController.delegate = self
+        
+        // Set text fields attributes and delegate
+        configureTextField(topTextField)
+        configureTextField(bottomTextField)
+        
+        // The controller will know as soon as the user tapped the bottom text field
+        bottomTextField.addTarget(self, action: #selector(bottomTextFieldTapped), for: .touchDown)
+    }
+    
+    func configureTextField(_ textField: UITextField) {
+        textField.defaultTextAttributes = [
             .font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
             .foregroundColor: UIColor.white,
             .strokeColor: UIColor.black,
             .strokeWidth: -5
         ]
-        
-        topTextField.defaultTextAttributes = memeTextAttributes
-        topTextField.textAlignment = .center
-        
-        bottomTextField.defaultTextAttributes = memeTextAttributes
-        bottomTextField.textAlignment = .center
-        
-        // Set the delegates
-        topTextField.delegate = textFieldDelegate
-        bottomTextField.delegate = textFieldDelegate
-        imagePickerController.delegate = self
-        
-        // The controller will know as soon as the user tapped the bottom text field
-        bottomTextField.addTarget(self, action: #selector(bottomTextFieldTapped), for: .touchDown)
+        textField.textAlignment = .center
+        textField.delegate = textFieldDelegate
     }
     
     @objc func bottomTextFieldTapped() {
