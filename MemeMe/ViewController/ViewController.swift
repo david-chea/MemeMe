@@ -14,6 +14,8 @@ class ViewController: UIViewController {
  
     // MARK: Outlets
     
+    @IBOutlet weak var topToolbar: UIToolbar!
+    @IBOutlet weak var bottomToolbar: UIToolbar!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var shareBarButtonItem: UIBarButtonItem!
@@ -78,9 +80,6 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        // Disable the share button until an image has been chosen
-        shareBarButtonItem.isEnabled = true
         
         // Disable the camera button if the device doesn't have a camera
         cameraBarButtonItem.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
@@ -155,7 +154,7 @@ class ViewController: UIViewController {
             (activityType, completed, returnedItems, activityError) in
                 if (completed && activityError == nil) {
                     // Save the memed image
-                    save(topTextField: self.topTextField, bottomTextField: self.bottomTextField, imageView: self.imageView, memedImage: memedImage)
+                    self.save(topTextField: self.topTextField, bottomTextField: self.bottomTextField, imageView: self.imageView, memedImage: memedImage)
                     
                     // Dismiss the sharing view
                     self.dismiss(animated: true, completion: nil)
