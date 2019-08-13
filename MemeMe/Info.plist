@@ -5,7 +5,7 @@
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>MemeMe needs permission to write photos.</string>
 	<key>NSCameraUsageDescription</key>
-	<string>MemeMe needs permission to use camera.</string>
+	<string>MemeMe needs permission to use your camera.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>

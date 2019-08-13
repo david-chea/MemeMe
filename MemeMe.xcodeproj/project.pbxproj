@@ -41,6 +41,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		63050C7D2302A67400D041DC /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				63D19B0A23001A7700C4A999 /* TextFieldDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
 		6314C3D923015DF200F697D8 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -79,12 +87,12 @@
 		6369F9AD22FEF20A00212F76 /* MemeMe */ = {
 			isa = PBXGroup;
 			children = (
+				63050C7D2302A67400D041DC /* Delegates */,
 				6314C3DA23015E0400F697D8 /* Storyboards */,
 				6314C3D923015DF200F697D8 /* ViewController */,
 				6369F9AE22FEF20A00212F76 /* AppDelegate.swift */,
 				6369F9B522FEF20C00212F76 /* Assets.xcassets */,
 				6369F9BA22FEF20C00212F76 /* Info.plist */,
-				63D19B0A23001A7700C4A999 /* TextFieldDelegate.swift */,
 			);
 			path = MemeMe;
 			sourceTree = "<group>";

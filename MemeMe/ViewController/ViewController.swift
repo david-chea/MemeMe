@@ -32,20 +32,18 @@ class ViewController: UIViewController {
     
     // MARK: Properties
     
-    var isBottomTextFieldTapped = false
-    
-    // MARK: ???
+    // Hide the status bar
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
     
     // Identify the button that was tapped
     enum ButtonType: Int {
         case camera = 0, album
     }
     
-    // Hide the status bar
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
-
+    var isBottomTextFieldTapped = false
+    
     // MARK: Life cycle
     
     override func viewDidLoad() {
