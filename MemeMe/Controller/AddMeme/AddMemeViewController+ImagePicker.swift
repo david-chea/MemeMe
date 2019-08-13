@@ -1,5 +1,5 @@
 //
-//  ViewController+ImagePicker.swift
+//  AddMemeViewController+ImagePicker.swift
 //  MemeMe
 //
 //  Created by David Chea on 11/08/2019.
@@ -8,9 +8,7 @@
 
 import UIKit
 
-// MARK: - ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate
-
-extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension AddMemeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     // MARK: Delegate methods
     

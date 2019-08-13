@@ -8,8 +8,6 @@
 
 import UIKit
 
-// MARK - TextFieldDelegate: NSObject, UITextFieldDelegate
-
 class TextFieldDelegate: NSObject, UITextFieldDelegate {
     
     // MARK: Properties

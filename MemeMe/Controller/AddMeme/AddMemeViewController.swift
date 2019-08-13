@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  AddMemeViewController.swift
 //  MemeMe
 //
 //  Created by David Chea on 10/08/2019.
@@ -8,9 +8,7 @@
 
 import UIKit
 
-// MARK: - ViewController: UIViewController
-
-class ViewController: UIViewController {
+class AddMemeViewController: UIViewController {
  
     // MARK: Outlets
     
@@ -20,7 +18,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var shareBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var cameraBarButtonItem: UIBarButtonItem!
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var addImageView: UIImageView!
     
     // MARK: Controllers
     
@@ -151,7 +149,7 @@ class ViewController: UIViewController {
             (activityType, completed, returnedItems, activityError) in
                 if (completed && activityError == nil) {
                     // Save the memed image
-                    self.save(topTextField: self.topTextField, bottomTextField: self.bottomTextField, imageView: self.imageView, memedImage: memedImage)
+                    self.save(topTextField: self.topTextField, bottomTextField: self.bottomTextField, imageView: self.addImageView, memedImage: memedImage)
                     
                     // Dismiss the sharing view
                     self.dismiss(animated: true, completion: nil)
