@@ -49,7 +49,7 @@ class SentMemeTableViewController: UIViewController, UITableViewDataSource, UITa
         return cell
     }
     
-    // Tell the delegate that the specified row is now selected and display the related meme
+    // Tell the delegate that the specified row is now selected so it will display the related meme
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Get the view controller that will display the meme
         let detailViewController = storyboard?.instantiateViewController(withIdentifier: "detailViewController") as! DetailViewController
