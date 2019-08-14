@@ -20,6 +20,19 @@ class SentMemeCollectionViewController: UICollectionViewController {
     
     // MARK: Life cycle
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Set flow layout parameters
+        
+        let space: CGFloat = 3.0
+        let dimension = (view.frame.size.width - 2 * space) / space
+        
+        flowLayout.minimumInteritemSpacing = space
+        flowLayout.minimumLineSpacing = space
+        flowLayout.itemSize = CGSize(width: dimension, height: dimension)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

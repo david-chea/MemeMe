@@ -60,4 +60,17 @@ class SentMemeTableViewController: UIViewController, UITableViewDataSource, UITa
         // Display the view
         navigationController?.pushViewController(detailViewController, animated: true)
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == UITableViewCell.EditingStyle.delete) {
+            let row = (indexPath as NSIndexPath).row
+            (UIApplication.shared.delegate as! AppDelegate).memes.remove(at: row)
+            
+            tableView.reloadData()
+        }
+    }
 }

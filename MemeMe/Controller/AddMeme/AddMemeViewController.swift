@@ -75,6 +75,49 @@ class AddMemeViewController: UIViewController {
         unsubscribeFromKeyboardNotifications()
     }
     
+    // MARK: Actions
+    
+    // Trigger when the user tapped for sharing a meme
+    @IBAction func shareAction(_ sender: Any) {
+        // Generate a memed image
+        let memedImage = generateMemedImage(viewController: self)
+        
+        // Define an instance of UIActivityViewController and pass the memed image as an activity item
+        let activityViewController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
+        
+        // UIActivityViewController has finished and it's time to do some final operations
+        activityViewController.completionWithItemsHandler = {
+            (activityType, completed, returnedItems, activityError) in
+            if (completed && activityError == nil) {
+                // Save the memed image and back to the previous screen
+                self.save(topTextField: self.topTextField, bottomTextField: self.bottomTextField, imageView: self.addImageView, memedImage: memedImage)
+                self.backPreviousScreen()
+            }
+        }
+        
+        // Present the sharing view
+        present(activityViewController, animated: true, completion: nil)
+    }
+    
+    // Back to the previous screen
+    @IBAction func cancelAction(_ sender: Any) {
+        backPreviousScreen()
+    }
+    
+    // Trigger when the user tapped for picking an image
+    @IBAction func albumAction(_ sender: UIBarButtonItem) {
+        // Set the image's source type
+        switch (ButtonType(rawValue: sender.tag)!) {
+        case .camera:
+            imagePickerController.sourceType = .camera
+        case .album:
+            imagePickerController.sourceType = .photoLibrary
+        }
+        
+        // Present the album view
+        present(imagePickerController, animated: true, completion: nil)
+    }
+    
     // MARK: Methods
     
     // Show/hide navigation and tab bar
@@ -130,45 +173,9 @@ class AddMemeViewController: UIViewController {
         return keyboardSize.cgRectValue.height
     }
     
-    // MARK: Actions
-    
-    // Trigger when the user tapped for picking an image
-    @IBAction func albumAction(_ sender: UIBarButtonItem) {
-        // Set the image's source type
-        switch (ButtonType(rawValue: sender.tag)!) {
-        case .camera:
-            imagePickerController.sourceType = .camera
-        case .album:
-            imagePickerController.sourceType = .photoLibrary
-        }
-        
-        // Present the album view
-        present(imagePickerController, animated: true, completion: nil)
-    }
-    
-    // Trigger when the user tapped for sharing a meme
-    @IBAction func shareAction(_ sender: Any) {
-        // Generate a memed image
-        let memedImage = generateMemedImage(viewController: self)
-        
-        // Define an instance of UIActivityViewController and pass the memed image as an activity item
-        let activityViewController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
-        
-        // UIActivityViewController has finished and it's time to do some final operations
-        activityViewController.completionWithItemsHandler = {
-            (activityType, completed, returnedItems, activityError) in
-                if (completed && activityError == nil) {
-                    // Save the memed image
-                    self.save(topTextField: self.topTextField, bottomTextField: self.bottomTextField, imageView: self.addImageView, memedImage: memedImage)
-                    
-                    // Back to the previous screen
-                    self.navigationController?.popViewController(animated: true)
-                    
-                    self.hideNavigationTabBar(false)
-                }
-        }
-        
-        // Present the sharing view
-        present(activityViewController, animated: true, completion: nil)
+    // Back to the previous screen and show navigation and tab bar
+    func backPreviousScreen() {
+        navigationController?.popViewController(animated: true)
+        hideNavigationTabBar(false)
     }
 }
