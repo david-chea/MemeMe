@@ -15,7 +15,7 @@ extension AddMemeViewController: UIImagePickerControllerDelegate, UINavigationCo
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         // Retrieve and set the image to the view
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            imageView.image = image
+            addImageView.image = image
             
             // An image has been chosen so enable the share button
             shareBarButtonItem.isEnabled = true

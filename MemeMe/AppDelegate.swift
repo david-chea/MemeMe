@@ -15,5 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
+    // Array of all sent memes
     var memes = [Meme]()
 }

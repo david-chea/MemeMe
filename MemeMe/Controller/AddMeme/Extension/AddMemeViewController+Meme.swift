@@ -23,9 +23,7 @@ extension AddMemeViewController {
 
     // Generate a memed image
     func generateMemedImage(viewController: UIViewController) -> UIImage {
-        // Hide toolbars
-        topToolbar.isHidden = true
-        bottomToolbar.isHidden = true
+        hideToolbars(true)
         
         // Create an UIImage that combines ImageView and TextFields
         UIGraphicsBeginImageContext(viewController.view.frame.size)
@@ -33,10 +31,14 @@ extension AddMemeViewController {
         let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
-        // Show toolbars
-        topToolbar.isHidden = false
-        bottomToolbar.isHidden = false
+        hideToolbars(false)
         
         return memedImage
+    }
+    
+    // Show/hide top and bottom toolbar
+    func hideToolbars(_ isHidden: Bool) {
+        topToolbar.isHidden = isHidden
+        bottomToolbar.isHidden = isHidden
     }
 }

@@ -20,14 +20,6 @@ class AddMemeViewController: UIViewController {
     @IBOutlet weak var cameraBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var addImageView: UIImageView!
     
-    // MARK: Controllers
-    
-    let imagePickerController = UIImagePickerController()
-    
-    // MARK: Delegate objects
-    
-    let textFieldDelegate = TextFieldDelegate()
-    
     // MARK: Properties
     
     // Hide the status bar
@@ -41,6 +33,14 @@ class AddMemeViewController: UIViewController {
     }
     
     var isBottomTextFieldTapped = false
+    
+    // MARK: Controllers
+    
+    let imagePickerController = UIImagePickerController()
+    
+    // MARK: Delegate objects
+    
+    let textFieldDelegate = TextFieldDelegate()
     
     // MARK: Life cycle
     
@@ -58,6 +58,31 @@ class AddMemeViewController: UIViewController {
         bottomTextField.addTarget(self, action: #selector(bottomTextFieldTapped), for: .touchDown)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        hideNavigationTabBar(true)
+        
+        // Disable the camera button if the device doesn't have a camera
+        cameraBarButtonItem.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        
+        subscribeToKeyboardNotifications()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        unsubscribeFromKeyboardNotifications()
+    }
+    
+    // MARK: Methods
+    
+    // Show/hide navigation and tab bar
+    func hideNavigationTabBar(_ isHidden: Bool) {
+        navigationController?.navigationBar.isHidden = isHidden
+        tabBarController?.tabBar.isHidden = isHidden
+    }
+    
     func configureTextField(_ textField: UITextField) {
         textField.defaultTextAttributes = [
             .font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
@@ -73,28 +98,13 @@ class AddMemeViewController: UIViewController {
         isBottomTextFieldTapped = true
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        // Disable the camera button if the device doesn't have a camera
-        cameraBarButtonItem.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
-        
-        subscribeToKeyboardNotifications()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        unsubscribeFromKeyboardNotifications()
-    }
-    
-    // MARK: Subscribe/unsubscribe to keyboard notifications
-    
+    // Subscribe to keyboard notifications
     func subscribeToKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
+    // Unsubscribe to keyboard notifications
     func unsubscribeFromKeyboardNotifications() {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -151,8 +161,10 @@ class AddMemeViewController: UIViewController {
                     // Save the memed image
                     self.save(topTextField: self.topTextField, bottomTextField: self.bottomTextField, imageView: self.addImageView, memedImage: memedImage)
                     
-                    // Dismiss the sharing view
-                    self.dismiss(animated: true, completion: nil)
+                    // Back to the previous screen
+                    self.navigationController?.popViewController(animated: true)
+                    
+                    self.hideNavigationTabBar(false)
                 }
         }
         
