@@ -72,6 +72,7 @@ class AddMemeViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
+        hideNavigationTabBar(false)
         unsubscribeFromKeyboardNotifications()
     }
     
@@ -173,9 +174,8 @@ class AddMemeViewController: UIViewController {
         return keyboardSize.cgRectValue.height
     }
     
-    // Back to the previous screen and show navigation and tab bar
+    // Back to the previous screen
     func backPreviousScreen() {
         navigationController?.popViewController(animated: true)
-        hideNavigationTabBar(false)
     }
 }

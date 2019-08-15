@@ -27,7 +27,9 @@ class SentMemeTableViewController: UIViewController, UITableViewDataSource, UITa
         tableView.reloadData()
     }
     
-    // MARK: Protocol methods
+    // MARK: - Protocol methods
+    
+    // MARK: Display table and rows
     
     // Tell the data source to return the number of rows in the screen
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -49,6 +51,8 @@ class SentMemeTableViewController: UIViewController, UITableViewDataSource, UITa
         return cell
     }
     
+    // MARK: User taps a row
+    
     // Tell the delegate that the specified row is now selected so it will display the related meme
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Get the view controller that will display the meme
@@ -61,10 +65,14 @@ class SentMemeTableViewController: UIViewController, UITableViewDataSource, UITa
         navigationController?.pushViewController(detailViewController, animated: true)
     }
     
+    // MARK: User swipes to delete a row
+    
+    // Ask the data source to verify that the given row is editable
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
+    // Ask the data source to commit the deletion of the specified row
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == UITableViewCell.EditingStyle.delete) {
             let row = (indexPath as NSIndexPath).row
