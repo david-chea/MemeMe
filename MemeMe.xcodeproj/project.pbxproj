@@ -18,7 +18,7 @@
 		63BEC32223031315007DA2E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63BEC32123031315007DA2E9 /* Main.storyboard */; };
 		63BEC32423031339007DA2E9 /* SentMemeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BEC32323031339007DA2E9 /* SentMemeCollectionViewCell.swift */; };
 		63D19B0B23001A7700C4A999 /* TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D19B0A23001A7700C4A999 /* TextFieldDelegate.swift */; };
-		63DD91C12300B5FF00F2ADA3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63DD91C02300B5FF00F2ADA3 /* LaunchScreen.storyboard */; };
+		63E01B6023191D9100C34ECC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63E01B5F23191D9100C34ECC /* LaunchScreen.storyboard */; };
 		63FDE37323004B8F00D57B0A /* AddMemeViewController+ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FDE37223004B8F00D57B0A /* AddMemeViewController+ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,7 +36,7 @@
 		63BEC32123031315007DA2E9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		63BEC32323031339007DA2E9 /* SentMemeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentMemeCollectionViewCell.swift; sourceTree = "<group>"; };
 		63D19B0A23001A7700C4A999 /* TextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldDelegate.swift; sourceTree = "<group>"; };
-		63DD91C02300B5FF00F2ADA3 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		63E01B5F23191D9100C34ECC /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63FDE37223004B8F00D57B0A /* AddMemeViewController+ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddMemeViewController+ImagePicker.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,7 +72,7 @@
 		6314C3DA23015E0400F697D8 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				63DD91C02300B5FF00F2ADA3 /* LaunchScreen.storyboard */,
+				63E01B5F23191D9100C34ECC /* LaunchScreen.storyboard */,
 				63BEC32123031315007DA2E9 /* Main.storyboard */,
 			);
 			path = View;
@@ -202,8 +202,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63E01B6023191D9100C34ECC /* LaunchScreen.storyboard in Resources */,
 				63BEC32223031315007DA2E9 /* Main.storyboard in Resources */,
-				63DD91C12300B5FF00F2ADA3 /* LaunchScreen.storyboard in Resources */,
 				6369F9B622FEF20C00212F76 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
