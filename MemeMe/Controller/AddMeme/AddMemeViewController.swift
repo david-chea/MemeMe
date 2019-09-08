@@ -162,7 +162,7 @@ class AddMemeViewController: UIViewController {
         }
     }
     
-    // Set the view to it's original position
+    // Set the view to its original position
     @objc func keyboardWillHide(_ notification: Notification) {
         view.frame.origin.y = 0
     }
