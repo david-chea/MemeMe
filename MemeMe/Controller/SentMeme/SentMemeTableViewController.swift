@@ -64,21 +64,4 @@ class SentMemeTableViewController: UIViewController, UITableViewDataSource, UITa
         // Display the view
         navigationController?.pushViewController(detailViewController, animated: true)
     }
-    
-    // MARK: User swipes to delete a row
-    
-    // Ask the data source to verify that the given row is editable
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    // Ask the data source to commit the deletion of the specified row
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if (editingStyle == UITableViewCell.EditingStyle.delete) {
-            let row = (indexPath as NSIndexPath).row
-            (UIApplication.shared.delegate as! AppDelegate).memes.remove(at: row)
-            
-            tableView.reloadData()
-        }
-    }
 }
