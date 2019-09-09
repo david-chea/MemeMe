@@ -86,7 +86,7 @@ class AddMemeViewController: UIViewController {
         // Define an instance of UIActivityViewController and pass the memed image as an activity item
         let activityViewController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         
-        // UIActivityViewController has finished and it's time to do some final operations
+        // UIActivityViewController has finished and it is time to do some final operations
         activityViewController.completionWithItemsHandler = {
             (activityType, completed, returnedItems, activityError) in
             if (completed && activityError == nil) {
@@ -154,7 +154,7 @@ class AddMemeViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    // Only move the view if it's the bottom text field that was touched
+    // Only move the view if it is the bottom text field that was touched
     @objc func keyboardWillShow(_ notification: Notification) {
         if isBottomTextFieldTapped {
             view.frame.origin.y -= getKeyboardHeight(notification)
