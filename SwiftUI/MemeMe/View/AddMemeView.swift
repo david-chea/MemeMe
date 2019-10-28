@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  AddMemeView.swift
 //  MemeMe
 //
 //  Created by David Chea on 28/10/2019.
@@ -8,18 +8,18 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct AddMemeView: View {
     
     // MARK: - View
     
     var body: some View {
-        Text("Hello World")
+        Text(/*@START_MENU_TOKEN@*/"Hello World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct AddMemeView_Previews: PreviewProvider {
     
     static var previews: some View {
-        ContentView()
+        AddMemeView()
     }
 }
