@@ -12,8 +12,7 @@ struct SentMemeView: View {
     
     // MARK: - Property
     
-    /// Check if the sheet for adding a meme is presented.
-    @State private var isAdding = false
+    @State private var isShowingAddMemeView = false
     
     // MARK: - Views
     
@@ -37,11 +36,11 @@ struct SentMemeView: View {
     }
     
     var addButton: some View {
-        Button(action: { self.isAdding.toggle() }) {
+        Button(action: { self.isShowingAddMemeView.toggle() }) {
             Image(systemName: "plus.rectangle")
                 .imageScale(.large)
         }
-        .sheet(isPresented: $isAdding) {
+        .sheet(isPresented: $isShowingAddMemeView) {
             AddMemeView()
         }
     }

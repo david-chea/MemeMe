@@ -14,6 +14,7 @@
 		635F96C323673CBF00F583D7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 635F96C223673CBF00F583D7 /* Preview Assets.xcassets */; };
 		635F96C623673CBF00F583D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 635F96C423673CBF00F583D7 /* LaunchScreen.storyboard */; };
 		639AB10423674C2D00693F1E /* AddMemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639AB10323674C2D00693F1E /* AddMemeView.swift */; };
+		63A0E3AC2368A13B00094510 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A0E3AB2368A13B00094510 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		635F96C523673CBF00F583D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		635F96C723673CBF00F583D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		639AB10323674C2D00693F1E /* AddMemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemeView.swift; sourceTree = "<group>"; };
+		63A0E3AB2368A13B00094510 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				635F96BD23673CBE00F583D7 /* SentMemeView.swift */,
-				639AB10323674C2D00693F1E /* AddMemeView.swift */,
+				63A0E3AD2368A2B700094510 /* AddMemeView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -92,6 +94,15 @@
 				635F96BF23673CBF00F583D7 /* Assets.xcassets */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		63A0E3AD2368A2B700094510 /* AddMemeView */ = {
+			isa = PBXGroup;
+			children = (
+				639AB10323674C2D00693F1E /* AddMemeView.swift */,
+				63A0E3AB2368A13B00094510 /* ImagePicker.swift */,
+			);
+			path = AddMemeView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,6 +178,7 @@
 			files = (
 				639AB10423674C2D00693F1E /* AddMemeView.swift in Sources */,
 				635F96BA23673CBE00F583D7 /* AppDelegate.swift in Sources */,
+				63A0E3AC2368A13B00094510 /* ImagePicker.swift in Sources */,
 				635F96BC23673CBE00F583D7 /* SceneDelegate.swift in Sources */,
 				635F96BE23673CBE00F583D7 /* SentMemeView.swift in Sources */,
 			);

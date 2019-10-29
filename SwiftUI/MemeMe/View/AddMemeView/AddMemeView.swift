@@ -12,33 +12,44 @@ struct AddMemeView: View {
     
     // MARK: - Properties
     
-    @State private var imageIsAdded = false
+    @State private var selectedImage = UIImage()
     @State private var topText = "TOP"
     @State private var bottomText = "BOTTOM"
+    
+    @State private var isShowingImagePicker = false
+    
+    private var isImageAdded = false
     
     // MARK: - Views
     
     var body: some View {
         NavigationView {
             VStack {
-                VStack {
-                    Spacer()
-                    
-                    TextField("", text: $topText)
-                    
-                    Spacer()
-                    
-                    TextField("", text: $bottomText)
-                    
-                    Spacer()
-                }
-                .background(Color.black)
-                .foregroundColor(Color.white)
-                .font(Font.system(size: 50, design: .default))
-                .multilineTextAlignment(.center)
-                
                 Spacer()
                 
+                ZStack {
+                    Image(uiImage: selectedImage)
+                        .resizable()
+                        .scaledToFill()
+                    
+                    VStack {
+                        Spacer()
+                        
+                        TextField("", text: $topText)
+                        
+                        Spacer()
+                        
+                        TextField("", text: $bottomText)
+                        
+                        Spacer()
+                    }
+                    .foregroundColor(Color.red)
+                    .font(Font.system(size: 50, design: .default))
+                    .multilineTextAlignment(.center)
+                }
+                
+                Spacer()
+                    
                 HStack {
                     Spacer()
                     
@@ -49,9 +60,12 @@ struct AddMemeView: View {
                     
                     Spacer()
                     
-                    Button(action: {}) {
+                    Button(action: { self.isShowingImagePicker.toggle() }) {
                         Image(systemName: "photo")
                             .imageScale(.large)
+                    }
+                    .sheet(isPresented: $isShowingImagePicker) {
+                        ImagePicker(selectedImage: self.$selectedImage, isShowingImagePicker: self.$isShowingImagePicker)
                     }
                     
                     Spacer()
@@ -69,7 +83,7 @@ struct AddMemeView: View {
             Image(systemName: "square.and.arrow.up")
                 .imageScale(.large)
         }
-        .disabled(!imageIsAdded)
+        .disabled(!isImageAdded)
     }
 }
 
