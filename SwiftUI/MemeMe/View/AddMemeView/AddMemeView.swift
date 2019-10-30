@@ -12,13 +12,13 @@ struct AddMemeView: View {
     
     // MARK: - Properties
     
-    @State private var selectedImage = UIImage()
+    @State private var isImageAdded = false
+    
+    @State private var selectedImage = UIImage(named: "image-black")!
     @State private var topText = "TOP"
     @State private var bottomText = "BOTTOM"
     
     @State private var isShowingImagePicker = false
-    
-    private var isImageAdded = false
     
     // MARK: - Views
     
@@ -30,9 +30,9 @@ struct AddMemeView: View {
                 ZStack {
                     Image(uiImage: selectedImage)
                         .resizable()
-                        .scaledToFill()
-                    
-                    VStack {
+                        .frame(width: 500, height: 400, alignment: .center)
+                        
+                    VStack(spacing: 50) {
                         Spacer()
                         
                         TextField("", text: $topText)
@@ -43,7 +43,7 @@ struct AddMemeView: View {
                         
                         Spacer()
                     }
-                    .foregroundColor(Color.red)
+                    .foregroundColor(Color.white)
                     .font(Font.system(size: 50, design: .default))
                     .multilineTextAlignment(.center)
                 }
@@ -65,11 +65,12 @@ struct AddMemeView: View {
                             .imageScale(.large)
                     }
                     .sheet(isPresented: $isShowingImagePicker) {
-                        ImagePicker(selectedImage: self.$selectedImage, isShowingImagePicker: self.$isShowingImagePicker)
+                        ImagePicker(isImageAdded: self.$isImageAdded, selectedImage: self.$selectedImage, isShowingImagePicker: self.$isShowingImagePicker)
                     }
                     
                     Spacer()
                 }
+                .padding()
                 
                 Spacer()
             }

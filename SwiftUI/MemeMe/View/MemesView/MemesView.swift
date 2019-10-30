@@ -1,5 +1,5 @@
 //
-//  SentMemeView.swift
+//  MemesView.swift
 //  MemeMe
 //
 //  Created by David Chea on 28/10/2019.
@@ -8,9 +8,11 @@
 
 import SwiftUI
 
-struct SentMemeView: View {
+struct MemesView: View {
     
-    // MARK: - Property
+    // MARK: - Properties
+    
+    @EnvironmentObject private var data: Data
     
     @State private var isShowingAddMemeView = false
     
@@ -18,17 +20,10 @@ struct SentMemeView: View {
     
     var body: some View {
         NavigationView {
-            TabView {
-                Text("List")
-                    .tabItem {
-                        Image(systemName: "list.bullet")
-                            .imageScale(.large)
-                    }
-                Text("Collection")
-                    .tabItem {
-                        Image(systemName: "table")
-                            .imageScale(.large)
-                    }
+            List {
+                ForEach(data.memes) { meme in
+                    MemeRow(meme: meme)
+                }
             }
             .navigationBarTitle("Sent Memes")
             .navigationBarItems(trailing: addButton)
@@ -46,11 +41,11 @@ struct SentMemeView: View {
     }
 }
 
-struct SentMemeView_Previews: PreviewProvider {
+struct MemesView_Previews: PreviewProvider {
     
     static var previews: some View {
         ForEach(["iPhone SE", "iPhone 11 Pro Max"], id: \.self) { deviceName in
-            SentMemeView()
+            MemesView()
                 .previewDevice(PreviewDevice(rawValue: deviceName))
                 .previewDisplayName(deviceName)
         }

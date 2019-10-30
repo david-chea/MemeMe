@@ -12,6 +12,8 @@ struct ImagePicker: UIViewControllerRepresentable {
     
     // MARK: - Properties
     
+    @Binding var isImageAdded: Bool
+    
     @Binding var selectedImage: UIImage
     
     @Binding var isShowingImagePicker: Bool
@@ -48,6 +50,7 @@ struct ImagePicker: UIViewControllerRepresentable {
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             guard let selectedImage = info[.originalImage] as? UIImage else { return }
             
+            parent.isImageAdded = true
             parent.selectedImage = selectedImage
             parent.isShowingImagePicker = false
         }
