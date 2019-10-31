@@ -12,14 +12,17 @@ struct MemeRow: View {
     
     // MARK: - Property
     
-    var meme: Meme
+    let meme: Meme
     
     // MARK: - View
     
     var body: some View {
         HStack {
-            Image(uiImage: meme.memedImage)
-            Text("\(meme.topText) \(meme.bottomText)")
+            Image(uiImage: meme.originalImage)
+                .resizable()
+                .frame(width: 50, height: 50)
+                .padding(.trailing)
+            Text("\(meme.topText) ... \(meme.bottomText)")
         }
     }
 }

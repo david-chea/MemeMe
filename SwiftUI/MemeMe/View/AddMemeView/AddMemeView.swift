@@ -12,13 +12,17 @@ struct AddMemeView: View {
     
     // MARK: - Properties
     
-    @State private var isImageAdded = false
+    @EnvironmentObject private var data: Data
     
-    @State private var selectedImage = UIImage(named: "image-black")!
+    @State private var memeImage = UIImage()
+    @State private var originalImage = UIImage(named: "image-black")!
     @State private var topText = "TOP"
     @State private var bottomText = "BOTTOM"
     
-    @State private var isShowingImagePicker = false
+    @State private var isImageAdded = false
+    
+    @State private var isShowingActivityViewController = false
+    @State private var isShowingImagePickerController = false
     
     // MARK: - Views
     
@@ -28,9 +32,9 @@ struct AddMemeView: View {
                 Spacer()
                 
                 ZStack {
-                    Image(uiImage: selectedImage)
+                    Image(uiImage: originalImage)
                         .resizable()
-                        .frame(width: 500, height: 400, alignment: .center)
+                        .frame(width: 500, height: 400)
                         
                     VStack(spacing: 50) {
                         Spacer()
@@ -60,12 +64,16 @@ struct AddMemeView: View {
                     
                     Spacer()
                     
-                    Button(action: { self.isShowingImagePicker.toggle() }) {
+                    Button(action: { self.isShowingImagePickerController.toggle() }) {
                         Image(systemName: "photo")
                             .imageScale(.large)
                     }
-                    .sheet(isPresented: $isShowingImagePicker) {
-                        ImagePicker(isImageAdded: self.$isImageAdded, selectedImage: self.$selectedImage, isShowingImagePicker: self.$isShowingImagePicker)
+                    .sheet(isPresented: $isShowingImagePickerController) {
+                        ImagePickerController(
+                            originalImage: self.$originalImage,
+                            isImageAdded: self.$isImageAdded,
+                            isShowingImagePickerController: self.$isShowingImagePickerController
+                        )
                     }
                     
                     Spacer()
@@ -80,11 +88,21 @@ struct AddMemeView: View {
     }
     
     var shareButton: some View {
-        Button(action: {}) {
+        Button(action: { self.isShowingActivityViewController.toggle() }) {
             Image(systemName: "square.and.arrow.up")
                 .imageScale(.large)
         }
         .disabled(!isImageAdded)
+        .sheet(isPresented: $isShowingActivityViewController) {
+            ActivityViewController(
+                isShowingActivityViewController: self.$isShowingActivityViewController,
+                memeImage: self.memeImage,
+                originalImage: self.originalImage,
+                topText: self.topText,
+                bottomText: self.bottomText
+            )
+                .environmentObject(self.data)
+        }
     }
 }
 

@@ -1,5 +1,5 @@
 //
-//  ImagePicker.swift
+//  ImagePickerController.swift
 //  MemeMe
 //
 //  Created by David Chea on 29/10/2019.
@@ -8,15 +8,14 @@
 
 import SwiftUI
 
-struct ImagePicker: UIViewControllerRepresentable {
+struct ImagePickerController: UIViewControllerRepresentable {
     
     // MARK: - Properties
     
+    @Binding var originalImage: UIImage
     @Binding var isImageAdded: Bool
     
-    @Binding var selectedImage: UIImage
-    
-    @Binding var isShowingImagePicker: Bool
+    @Binding var isShowingImagePickerController: Bool
     
     // MARK: - Protocol methods
     
@@ -37,22 +36,22 @@ struct ImagePicker: UIViewControllerRepresentable {
         
         // MARK: - Property
         
-        let parent: ImagePicker
+        let parent: ImagePickerController
         
         // MARK: - Initializer
         
-        init(parent: ImagePicker) {
+        init(parent: ImagePickerController) {
             self.parent = parent
         }
         
         // MARK: - Protocol method
         
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            guard let selectedImage = info[.originalImage] as? UIImage else { return }
+            guard let originalImage = info[.originalImage] as? UIImage else { return }
             
+            parent.originalImage = originalImage
             parent.isImageAdded = true
-            parent.selectedImage = selectedImage
-            parent.isShowingImagePicker = false
+            parent.isShowingImagePickerController = false
         }
     }
 }

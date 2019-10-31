@@ -12,15 +12,15 @@ class Meme: Identifiable {
     
     // MARK: - Properties
     
-    let memedImage: UIImage
+    let memeImage: UIImage
     let originalImage: UIImage
     let topText: String
     let bottomText: String
     
     // MARK: - Initializer
     
-    init(memedImage: UIImage, originalImage: UIImage, topText: String, bottomText: String) {
-        self.memedImage = memedImage
+    init(memeImage: UIImage, originalImage: UIImage, topText: String, bottomText: String) {
+        self.memeImage = memeImage
         self.originalImage = originalImage
         self.topText = topText
         self.bottomText = bottomText

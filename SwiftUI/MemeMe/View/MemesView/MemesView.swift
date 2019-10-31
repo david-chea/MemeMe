@@ -20,13 +20,19 @@ struct MemesView: View {
     
     var body: some View {
         NavigationView {
-            List {
-                ForEach(data.memes) { meme in
-                    MemeRow(meme: meme)
+            VStack {
+                Spacer()
+                
+                List {
+                    ForEach(data.memes) { meme in
+                        MemeRow(meme: meme)
+                    }
                 }
+                .navigationBarTitle("Sent Memes")
+                .navigationBarItems(trailing: addButton)
+                
+                Spacer()
             }
-            .navigationBarTitle("Sent Memes")
-            .navigationBarItems(trailing: addButton)
         }
     }
     
@@ -37,6 +43,7 @@ struct MemesView: View {
         }
         .sheet(isPresented: $isShowingAddMemeView) {
             AddMemeView()
+                .environmentObject(self.data)
         }
     }
 }
