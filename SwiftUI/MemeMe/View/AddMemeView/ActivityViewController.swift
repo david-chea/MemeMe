@@ -14,9 +14,6 @@ struct ActivityViewController: UIViewControllerRepresentable {
     
     @EnvironmentObject private var data: Data
     
-    @Binding var isShowingActivityViewController: Bool
-    
-    let memeImage: UIImage
     let originalImage: UIImage
     let topText: String
     let bottomText: String
@@ -24,10 +21,10 @@ struct ActivityViewController: UIViewControllerRepresentable {
     // MARK: - Protocol methods
     
     func makeUIViewController(context: Context) -> UIActivityViewController {
-        let meme = Meme(memeImage: memeImage, originalImage: originalImage, topText: topText, bottomText: bottomText)
+        let meme = Meme(memeImage: originalImage, originalImage: originalImage, topText: topText, bottomText: bottomText)
         data.memes.append(meme)
         
-        return UIActivityViewController(activityItems: [memeImage], applicationActivities: nil)
+        return UIActivityViewController(activityItems: [originalImage], applicationActivities: nil)
     }
     
     func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}

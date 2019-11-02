@@ -14,7 +14,6 @@ struct AddMemeView: View {
     
     @EnvironmentObject private var data: Data
     
-    @State private var memeImage = UIImage()
     @State private var originalImage = UIImage(named: "image-black")!
     @State private var topText = "TOP"
     @State private var bottomText = "BOTTOM"
@@ -23,6 +22,8 @@ struct AddMemeView: View {
     
     @State private var isShowingActivityViewController = false
     @State private var isShowingImagePickerController = false
+    
+    private var isCameraAvailable = UIImagePickerController.isSourceTypeAvailable(.camera)
     
     // MARK: - Views
     
@@ -39,11 +40,11 @@ struct AddMemeView: View {
                     VStack(spacing: 50) {
                         Spacer()
                         
-                        TextField("", text: $topText)
+                        MemeTextField(text: $topText)
                         
                         Spacer()
                         
-                        TextField("", text: $bottomText)
+                        MemeTextField(text: $bottomText)
                         
                         Spacer()
                     }
@@ -57,9 +58,17 @@ struct AddMemeView: View {
                 HStack {
                     Spacer()
                     
-                    Button(action: {}) {
+                    Button(action: { self.isShowingImagePickerController.toggle() }) {
                         Image(systemName: "camera")
                             .imageScale(.large)
+                    }
+                    .disabled(!isCameraAvailable)
+                    .sheet(isPresented: $isShowingImagePickerController) {
+                        ImagePickerController(
+                            originalImage: self.$originalImage,
+                            isImageAdded: self.$isImageAdded,
+                            isShowingImagePickerController: self.$isShowingImagePickerController
+                        )
                     }
                     
                     Spacer()
@@ -83,11 +92,11 @@ struct AddMemeView: View {
                 Spacer()
             }
             .navigationBarTitle("Create your meme")
-            .navigationBarItems(trailing: shareButton)
+            .navigationBarItems(trailing: activityButton)
         }
     }
     
-    var shareButton: some View {
+    var activityButton: some View {
         Button(action: { self.isShowingActivityViewController.toggle() }) {
             Image(systemName: "square.and.arrow.up")
                 .imageScale(.large)
@@ -95,8 +104,6 @@ struct AddMemeView: View {
         .disabled(!isImageAdded)
         .sheet(isPresented: $isShowingActivityViewController) {
             ActivityViewController(
-                isShowingActivityViewController: self.$isShowingActivityViewController,
-                memeImage: self.memeImage,
                 originalImage: self.originalImage,
                 topText: self.topText,
                 bottomText: self.bottomText

@@ -25,7 +25,9 @@ struct MemesView: View {
                 
                 List {
                     ForEach(data.memes) { meme in
-                        MemeRow(meme: meme)
+                        NavigationLink(destination: MemeDetailView(memeImage: meme.memeImage)) {
+                            MemeRow(meme: meme)
+                        }
                     }
                 }
                 .navigationBarTitle("Sent Memes")
