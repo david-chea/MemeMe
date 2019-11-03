@@ -8,7 +8,7 @@ This project is part of the [Udacity iOS Developer Nanodegree](https://www.udaci
 
 <p float="left">
     <img src="./README-IMAGES/screenshot-add.jpg" width="289" height="518">
-    <img src="./README-IMAGES/screenshot-list.jpg" width="289" height="518">
+    <img src="./README-IMAGES/screenshot-memes.jpg" width="289" height="518">
 </p>
 
 ## License
