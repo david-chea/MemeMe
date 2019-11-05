@@ -21,10 +21,16 @@ struct ActivityViewController: UIViewControllerRepresentable {
     // MARK: - Protocol methods
     
     func makeUIViewController(context: Context) -> UIActivityViewController {
-        let meme = Meme(memeImage: originalImage, originalImage: originalImage, topText: topText, bottomText: bottomText)
-        data.memes.append(meme)
+        let activityViewController = UIActivityViewController(activityItems: [originalImage], applicationActivities: nil)
         
-        return UIActivityViewController(activityItems: [originalImage], applicationActivities: nil)
+        activityViewController.completionWithItemsHandler = { activityType, completed, returnedItems, activityError in
+            if (completed && activityError == nil) {
+                let meme = Meme(memeImage: self.originalImage, originalImage: self.originalImage, topText: self.topText, bottomText: self.bottomText)
+                self.data.memes.append(meme)
+            }
+        }
+        
+        return activityViewController
     }
     
     func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
