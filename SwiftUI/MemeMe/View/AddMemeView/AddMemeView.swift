@@ -35,7 +35,7 @@ struct AddMemeView: View {
                 ZStack {
                     Image(uiImage: originalImage)
                         .resizable()
-                        .frame(width: 500, height: 400)
+                        .frame(width: 500, height: 350)
                         
                     VStack(spacing: 50) {
                         Spacer()
