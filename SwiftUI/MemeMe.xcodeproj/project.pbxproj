@@ -56,8 +56,8 @@
 		6311BADC2369F08400ECFE26 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				6311BADD2369F0A100ECFE26 /* Meme.swift */,
 				6311BAE2236A0C9000ECFE26 /* Data.swift */,
+				6311BADD2369F0A100ECFE26 /* Meme.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

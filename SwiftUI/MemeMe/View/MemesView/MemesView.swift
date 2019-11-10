@@ -20,27 +20,22 @@ struct MemesView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                Spacer()
-                
-                List {
-                    ForEach(data.memes) { meme in
-                        NavigationLink(destination: MemeDetailView(memeImage: meme.memeImage)) {
-                            MemeRow(meme: meme)
-                        }
+            List {
+                ForEach(data.memes) { meme in
+                    NavigationLink(destination: MemeDetailView(memeImage: meme.memeImage)) {
+                        MemeRow(meme: meme)
                     }
                 }
-                .navigationBarTitle("Sent Memes")
-                .navigationBarItems(trailing: addButton)
-                
-                Spacer()
             }
+            .padding(.top)
+            .navigationBarTitle("Sent Memes")
+            .navigationBarItems(trailing: addButton)
         }
     }
     
     var addButton: some View {
         Button(action: { self.isShowingAddMemeView.toggle() }) {
-            Image(systemName: "plus.rectangle")
+            Image(systemName: "plus")
                 .imageScale(.large)
         }
         .sheet(isPresented: $isShowingAddMemeView) {
