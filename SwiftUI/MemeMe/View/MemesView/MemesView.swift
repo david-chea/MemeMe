@@ -12,7 +12,7 @@ struct MemesView: View {
     
     // MARK: - Properties
     
-    @EnvironmentObject private var data: Data
+    @EnvironmentObject private var memeData: MemeData
     
     @State private var isShowingAddMemeView = false
     
@@ -21,7 +21,7 @@ struct MemesView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(data.memes) { meme in
+                ForEach(memeData.memes) { meme in
                     NavigationLink(destination: MemeDetailView(memeImage: meme.memeImage)) {
                         MemeRow(meme: meme)
                     }
@@ -40,7 +40,7 @@ struct MemesView: View {
         }
         .sheet(isPresented: $isShowingAddMemeView) {
             AddMemeView()
-                .environmentObject(self.data)
+                .environmentObject(self.memeData)
         }
     }
 }

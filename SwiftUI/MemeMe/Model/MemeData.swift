@@ -1,5 +1,5 @@
 //
-//  Data.swift
+//  MemeData.swift
 //  MemeMe
 //
 //  Created by David Chea on 30/10/2019.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-final class Data: ObservableObject {
+final class MemeData: ObservableObject {
     
     @Published var memes = [Meme]()
 }

@@ -12,7 +12,7 @@ struct AddMemeView: View {
     
     // MARK: - Properties
     
-    @EnvironmentObject private var data: Data
+    @EnvironmentObject private var memeData: MemeData
     
     @State private var originalImage = UIImage(named: "image-black")!
     @State private var topText = "TOP"
@@ -108,7 +108,7 @@ struct AddMemeView: View {
                 topText: self.topText,
                 bottomText: self.bottomText
             )
-                .environmentObject(self.data)
+                .environmentObject(self.memeData)
         }
     }
 }

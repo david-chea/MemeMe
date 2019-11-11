@@ -12,7 +12,7 @@ struct ActivityViewController: UIViewControllerRepresentable {
     
     // MARK: - Properties
     
-    @EnvironmentObject private var data: Data
+    @EnvironmentObject private var memeData: MemeData
     
     let originalImage: UIImage
     let topText: String
@@ -26,7 +26,7 @@ struct ActivityViewController: UIViewControllerRepresentable {
         activityViewController.completionWithItemsHandler = { activityType, completed, returnedItems, activityError in
             if (completed && activityError == nil) {
                 let meme = Meme(memeImage: self.originalImage, originalImage: self.originalImage, topText: self.topText, bottomText: self.bottomText)
-                self.data.memes.append(meme)
+                self.memeData.memes.append(meme)
             }
         }
         
