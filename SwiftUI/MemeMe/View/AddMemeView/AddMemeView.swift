@@ -60,7 +60,6 @@ struct AddMemeView: View {
                     
                     Button(action: { self.isShowingImagePickerController.toggle() }) {
                         Image(systemName: "camera")
-                            .imageScale(.large)
                     }
                     .disabled(!isCameraAvailable)
                     .sheet(isPresented: $isShowingImagePickerController) {
@@ -75,7 +74,6 @@ struct AddMemeView: View {
                     
                     Button(action: { self.isShowingImagePickerController.toggle() }) {
                         Image(systemName: "photo")
-                            .imageScale(.large)
                     }
                     .sheet(isPresented: $isShowingImagePickerController) {
                         ImagePickerController(
@@ -99,7 +97,6 @@ struct AddMemeView: View {
     var activityButton: some View {
         Button(action: { self.isShowingActivityViewController.toggle() }) {
             Image(systemName: "square.and.arrow.up")
-                .imageScale(.large)
         }
         .disabled(!isImageAdded)
         .sheet(isPresented: $isShowingActivityViewController) {

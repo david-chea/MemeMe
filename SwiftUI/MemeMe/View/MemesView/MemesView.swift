@@ -36,7 +36,6 @@ struct MemesView: View {
     var addButton: some View {
         Button(action: { self.isShowingAddMemeView.toggle() }) {
             Image(systemName: "plus")
-                .imageScale(.large)
         }
         .sheet(isPresented: $isShowingAddMemeView) {
             AddMemeView()
