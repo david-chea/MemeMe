@@ -6,7 +6,7 @@ This project is part of the [Udacity iOS Developer Nanodegree](https://www.udaci
 
 ## Screenshots
 
-<p float="left">
+<p float="left" align="center">
     <img src="./README-IMAGES/screenshot-add.jpg" width="289" height="518">
     <img src="./README-IMAGES/screenshot-memes.jpg" width="289" height="518">
 </p>
